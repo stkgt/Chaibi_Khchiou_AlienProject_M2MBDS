@@ -17,8 +17,9 @@
 <div id="app">
 
 
-  <button (click)="newCas();">Ajouter un nouveau cas </button>
+  <button (click)="newCas();" id="btnNewCas">Ajouter un nouveau cas </button>
   <div id="divAjout" style="display: none;">
+    <button (click)="cancelNewCas();">Annuler</button>
     <form id="formulaireAjout">
       <fieldset>
         <legend>Ajout d'un Cas</legend>
@@ -94,9 +95,12 @@
       </fieldset>
     </form>
   </div>
+<br/>
+<br/>
   
   <!-- Div de modification de cas -->
   <div id="divModification" style="display: none;">
+  <button (click)="cancelModif();">Annuler</button>
     <form id="formulaireModification">
       <fieldset>
         <legend>Modification d'un Cas</legend>

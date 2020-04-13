@@ -104,7 +104,7 @@ exports.createCas = function(formData, callback) {
 	    if(!err) {
 	 
 			let toInsert = {
-				id_cas:Math.floor(Math.random() * 1000000), 
+				id_cas:""+Math.floor(Math.random() * 1000000), 
 				nom_dossier: formData.nom_dossier,
 				zone: formData.zone,
 				zone_code: formData.zone_code,

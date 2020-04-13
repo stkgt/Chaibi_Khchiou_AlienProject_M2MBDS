@@ -157,8 +157,18 @@ export class AppComponent implements OnInit {
     document.getElementById('divModification').style.display = "none";
   }
 
+  cancelModif(){
+    document.getElementById('divModification').style.display = "none";
+  }
+
   newCas(){
+    document.getElementById('btnNewCas').style.display = "none";
     document.getElementById('divAjout').style.display = "initial";
+  }
+
+  cancelNewCas(){
+    document.getElementById('btnNewCas').style.display = "initial";
+    document.getElementById('divAjout').style.display = "none";
   }
 
   saveNewCas(){

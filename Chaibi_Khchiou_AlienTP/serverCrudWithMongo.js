@@ -100,8 +100,9 @@ app.get('/api/cas', function(req, res) {
 
  	mongoDBModule.findCas(page, pagesize, function(data) {
  		var objdData = {
- 			msg:"cas recherchés avec succès",
-			data: data,
+			msg:"cas recherchés avec succès",
+			count: data.count,
+			data: data.data,
  		}
  		res.send(JSON.stringify(objdData)); 
  	}); 

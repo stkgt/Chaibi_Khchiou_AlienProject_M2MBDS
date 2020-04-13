@@ -11,19 +11,175 @@
   <app-username [username]="'Khchiou Mohamed'" (userClicked)="onUserWasClicked($event)"></app-username>
 </div>
 
-<!-- <p>
-  <label>
-    Nouvel élément : 
-    <input type="text" [(ngModel)]="nouvelElement">
-  </label>
-<button (click)="onAddElement()">Ajouter élément</button>
 
-</p>
-<p>Vous avez saisi : {{nouvelElement}}</p>
- -->
+
 
 <div id="app">
-  <h1>Nombre de Cas : {{ nbCas }}, nb pages = {{nbPagesDeResultats}}</h1>
+
+
+  <button (click)="newCas();">Ajouter un nouveau cas </button>
+  <div id="divAjout" style="display: none;">
+    <form id="formulaireAjout">
+      <fieldset>
+        <legend>Ajout d'un Cas</legend>
+        <label>
+          Nom dossier: <input type="text" name="nom_dossier" [(ngModel)]="nouveauCas.nom_dossier" required="" placeholder="Cas A la miage ">
+        </label>
+        <p></p>
+        <label>
+          Zone: <input type="text" name="zone" [(ngModel)]="nouveauCas.zone" required="" placeholder="France">
+        </label>
+        <p></p>
+        <label>
+          Zone Code: <input type="text" name="zone_code" [(ngModel)]="nouveauCas.zone_code" required="" placeholder="02">
+        </label>
+        <p></p>
+        <label>
+          Zone Type: <input type="text" name="zone_type" [(ngModel)]="nouveauCas.zone_type" required="" placeholder="Departement">
+        </label>
+        <p></p>
+        <label>
+          annee: <input type="text" name="annee" [(ngModel)]="nouveauCas.annee" required="" placeholder="année du fait yyyy">
+        </label>
+        <p></p>
+        <label>
+          mois: <input type="text" name="mois" [(ngModel)]="nouveauCas.mois" required="" placeholder="mois du fait mm">
+        </label>
+        <p></p>
+        <label>
+          jours: <input type="text" name="jour" [(ngModel)]="nouveauCas.jour" required="" placeholder="jour du fait jj">
+        </label>
+        <p></p>
+        <label>
+          description: <input type="text" name="resume_desc" [(ngModel)]="nouveauCas.resume_desc" required="" placeholder="Blablablabla">
+        </label>
+        <p></p>
+        <label>
+          resumé: <input type="text" name="resume_short" [(ngModel)]="nouveauCas.resume_short" required="" placeholder="petit résumé pas trop long">
+        </label>
+        <p></p>
+        <label>
+          nb temoignage: <input type="text" name="nb_temoignage" [(ngModel)]="nouveauCas.nb_temoignage" required="" placeholder="nombre de temoignage">
+        </label>
+        <p></p>
+        <label>
+          nb temoin: <input type="text" name="nb_temoin" [(ngModel)]="nouveauCas.nb_temoin" required="" placeholder="Nombre de temoin present">
+        </label>
+        <p></p>
+        <label>
+          nb pan: <input type="text" name="nb_pan" [(ngModel)]="nouveauCas.nb_pan" placeholder="???">
+        </label>
+        <p></p>
+        <label>
+          etrangeté: <input type="text" name="etrangete" [(ngModel)]="nouveauCas.etrangete" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="nouveauCas.fiabilite" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          qte info: <input type="text" name="qte_info" [(ngModel)]="nouveauCas.qte_info" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          consitance: <input type="text" name="consitance" [(ngModel)]="nouveauCas.consitance" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          classification: <input type="text" name="classification" [(ngModel)]="nouveauCas.classification" required="" placeholder="Type A, B, C, ou">
+        </label>
+        <p></p>
+        <button (click)="saveNewCas();">Ajouter ce cas </button>
+      </fieldset>
+    </form>
+  </div>
+  
+  <!-- Div de modification de cas -->
+  <div id="divModification" style="display: none;">
+    <form id="formulaireModification">
+      <fieldset>
+        <legend>Modification d'un Cas</legend>
+        <label>
+          Id Cas: <input type="text" name="id_cas" [(ngModel)]="casModif.id_cas" required readonly>
+        </label>
+        <p></p>
+        <label>
+          Nom dossier: <input type="text" name="nom_dossier" [(ngModel)]="casModif.nom_dossier" required>
+        </label>
+        <p></p>
+        <label>
+          Zone: <input type="text" name="zone" [(ngModel)]="casModif.zone" required>
+        </label>
+        <p></p>
+        <label>
+          Zone Code: <input type="text" name="zone_code" [(ngModel)]="casModif.zone_code" required>
+        </label>
+        <p></p>
+        <label>
+          Zone Type: <input type="text" name="zone_type" [(ngModel)]="casModif.zone_type" required>
+        </label>
+        <p></p>
+        <label>
+          annee: <input type="text" name="annee" [(ngModel)]="casModif.annee" required>
+        </label>
+        <p></p>
+        <label>
+          mois: <input type="text" name="mois" [(ngModel)]="casModif.mois" required>
+        </label>
+        <p></p>
+        <label>
+          jours: <input type="text" name="jour" [(ngModel)]="casModif.jour" required>
+        </label>
+        <p></p>
+        <label>
+          description: <input type="text" name="resume_desc" [(ngModel)]="casModif.resume_desc">
+        </label>
+        <p></p>
+        <label>
+          resumé: <input type="text" name="resume_short" [(ngModel)]="casModif.resume_short" required>
+        </label>
+        <p></p>
+        <label>
+          nb temoignage: <input type="text" name="nb_temoignage" [(ngModel)]="casModif.nb_temoignage" required>
+        </label>
+        <p></p>
+        <label>
+          nb temoin: <input type="text" name="nb_temoin" [(ngModel)]="casModif.nb_temoin" required>
+        </label>
+        <p></p>
+        <label>
+          nb pan: <input type="text" name="nb_pan" [(ngModel)]="casModif.nb_pan">
+        </label>
+        <p></p>
+        <label>
+          etrangeté: <input type="text" name="etrangete" [(ngModel)]="casModif.etrangete" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="casModif.fiabilite" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          qte info: <input type="text" name="qte_info" [(ngModel)]="casModif.qte_info" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          consitance: <input type="text" name="consitance" [(ngModel)]="casModif.consitance" placeholder="niveau entre 0 et 1">
+        </label>
+        <p></p>
+        <label>
+          classification: <input type="text" name="classification" [(ngModel)]="casModif.classification" required placeholder="Type A, B, C, ou">
+        </label>
+        <p></p>
+        <button (click)="saveModif();">Modifier ce Cas</button>
+      </fieldset>
+    </form>
+  </div>
+
+
+  <h1>Nombre total de Cas : {{ nbCas }}, nb pages = {{nbPagesDeResultats}}</h1>
+  <h1>Page actuelle = {{page}}</h1>
   <p>
     <input type="range" (change)="getCas()" value=10 min=2 max=100 [(ngModel)]="pagesize"> :
     {{pagesize}}
@@ -31,8 +187,13 @@
 
 
   <!-- modal for Cas details-->
+  <!-- <div *ngIf="sowhModal"> -->
   <jw-modal id="detail-modal">
-    <button class="modal-default-button" (click)="closeModal('detail-modal');">Close</button>
+    <div class="modal-header">
+      <button class="modal-default-button" (click)="closeModal('detail-modal');">X</button>
+      <h3>Details du Cas</h3>
+    </div>
+
     <p>Dossier : {{detailCas.nom_dossier}}</p>
     <p>Zone : {{detailCas.zone}}</p>
 
@@ -43,23 +204,27 @@
     </div>
   </jw-modal>
 
+  <!-- </div> -->
+
   <table>
     <tr>
       <th>Nom</th>
       <th>Zone</th>
+      <th>Code postal</th>
       <th>Annee</th>
       <th>Nb Temoignage</th>
       <th colspan="2">Edition</th>
     </tr>
     <tbody>
-      <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}" (click)="onDeleteElement(i)">
+      <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}">
 
         <td (click)="detailsCas(i)">{{cas.nom_dossier}}</td>
         <td> {{cas.zone}}</td>
+        <td> {{cas.zone_code}}</td>
         <td> {{cas.annee}}</td>
         <td> {{cas.nb_temoignage}}</td>
-        <td><button (click)="deleteCas(i)" >Supprimer</button></td>
-        <td><button>Modifier</button></td>
+        <td><button (click)="deleteCas(i)">Supprimer</button></td>
+        <td><button (click)="modifierCas(i)">Modifier</button></td>
       </tr>
     </tbody>
   </table>

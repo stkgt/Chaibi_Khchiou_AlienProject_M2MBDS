@@ -147,6 +147,16 @@ app.delete('/api/cas/:id', function(req, res) {
     res.send(JSON.stringify(reponse));
 })
 
+
+// Récupération d'un seul restaurant par son id
+app.get('/api/cas/count', function(res) {
+   let reponse = {
+    	msg : message
+    }
+    res.send(JSON.stringify(reponse));
+});
+
+
 //----------------------------------------------
 //----------------------------------------------
 //----------------------------------------------

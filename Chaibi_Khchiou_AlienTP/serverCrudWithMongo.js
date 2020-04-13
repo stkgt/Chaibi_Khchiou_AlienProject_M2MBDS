@@ -101,7 +101,7 @@ app.get('/api/cas', function(req, res) {
  	mongoDBModule.findCas(page, pagesize, function(data) {
  		var objdData = {
  			msg:"cas recherchés avec succès",
- 			data: data
+			data: data,
  		}
  		res.send(JSON.stringify(objdData)); 
  	}); 
@@ -148,6 +148,13 @@ app.delete('/api/cas/:id', function(req, res) {
 	var id = req.params.id;
 
  	mongoDBModule.deleteCas(id, function(data) {
+ 		res.send(JSON.stringify(data)); 
+ 	});
+})
+
+
+app.get('/api/cas/count/', function(res) {
+ 	mongoDBModule.getCountCas(function(data) {
  		res.send(JSON.stringify(data)); 
  	});
 })

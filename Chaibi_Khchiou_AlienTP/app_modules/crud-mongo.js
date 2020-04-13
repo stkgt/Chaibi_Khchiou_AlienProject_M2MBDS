@@ -31,17 +31,24 @@ exports.findCas = function(page, pagesize, callback) {
     MongoClient.connect(url, function(err, client) {
     	    console.log("pagesize = " + pagesize);
 			console.log("page = " + pagesize);
-			
+			var count=0;
 			var db = client.db(dbName);
+			db.collection(dbCollectionCas).count().then(val => {count = val;});
 
-			console.log("db " + db)
         if(!err){
-			db.collection(dbCollectionCas)
+			var arr = db.collection(dbCollectionCas)
 			.find()
             .skip(page*pagesize)
             .limit(pagesize)
-            .toArray()
-            .then(arr => callback(arr));
+            .toArray().then(arr =>{
+			let message = {
+				succes: true,
+				msg:"Details du cas envoyés",
+				data : arr,
+				count : count,
+                error : null,
+				}
+			callback(message)});
         }
         else{
             callback(-1);
@@ -261,14 +268,23 @@ exports.findTemoignage = function(page, pagesize, callback) {
 			
 			var db = client.db(dbName);
 
-			console.log("db " + db)
+			var db = client.db(dbName);
+			db.collection(dbCollectionTemoignage).count().then(val => {count = val;});
+
         if(!err){
-			db.collection(dbCollectionTemoignage)
+			var arr = db.collection(dbCollectionTemoignage)
 			.find()
             .skip(page*pagesize)
             .limit(pagesize)
-            .toArray()
-            .then(arr => callback(arr));
+            .toArray().then(arr =>{
+			let message = {
+				succes: true,
+				msg:"Details du Temoignage envoyés",
+				data : arr,
+				count : count,
+                error : null,
+				}
+			callback(message)});
         }
         else{
             callback(-1);

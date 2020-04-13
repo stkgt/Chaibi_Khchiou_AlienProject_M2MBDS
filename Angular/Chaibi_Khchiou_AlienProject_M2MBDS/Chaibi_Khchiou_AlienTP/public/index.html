@@ -1,0 +1,172 @@
+<html lang="fr">
+	<head>
+		<title>CRUD avec Express + MongoDB</title>
+		<!--
+		<script src="js/crudAvecFetch.js"></script>
+		-->
+		<script src="js/crudAvecFetchAvecTable.js"></script>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<h1>Test de l'API sur le serveur de cas Extraterestre</h1>
+		<h2>HTTP GET pour obtenir des Cas, ou un seul<h2>
+			<h3>GET /api/cas</h3>
+			<p>Pour tester sans Ajax, on peut juste faire un lien HTML:</p>
+			<ul>
+				<li><a href="/api/cas">Cliquer pour obtenir les 10 premiers cas</a>. La requête est simplement un GET sur <code>/api/cas</code></li>
+				<p>
+				<li><a href="/api/cas?page=2">Requête avec pagination, on indique la page (par defaut: 10 cas par page)</a>. Ici un GET sur <code>/api/cas?page=2</code></li>
+				<p>
+				<li><a href="/api/cas?page=2&pagesize=20">Requête avec pagination, on indique la page (2) et le nombre de restaurants par page (20)</a>. Ici un GET sur <code>/api/cas?page=2&pagesize=20</code></li>
+				<p>
+				<li><a href="/api/cas/2">Requête pour obtenir le détail du cas avec id=2</a>. Ici un GET sur <code>/api/cas/2</code></li>
+			</ul>
+			<h2>HTTP GET pour obtenir des temoignage, ou un seul<h2>
+			<h3>GET /api/temoignage
+
+			</h3>
+			<p>Pour tester sans Ajax, on peut juste faire un lien HTML:</p>
+			<ul>
+				<li><a href="/api/temoignage">Cliquer pour obtenir les 10 premiers temoignage</a>. La requête est simplement un GET sur <code>/api/temoignage</code></li>
+				<p>
+				<li><a href="/api/temoignage?page=2">Requête avec pagination, on indique la page (par defaut: 10 temoignage par page)</a>. Ici un GET sur <code>/api/temoignage?page=2</code></li>
+				<p>
+				<li><a href="/api/temoignage?page=2&pagesize=20">Requête avec pagination, on indique la page (2) et le nombre de temoignage par page (20)</a>. Ici un GET sur <code>/api/temoignage?page=2&pagesize=20</code></li>
+				<p>
+				<li><a href="/api/temoignage/2">Requête pour obtenir le détail du temoignage avec son id_cas=2</a>. Ici un GET sur <code>/api/temoignage/2</code></li>
+			</ul>
+			<!-- <p>Pour tester avec Ajax, il faut du JavaScript. On utilise la nouvelle API fetch, disponible depuis 2012. Mais avec un polyfill on peut la faire fonctionner sur tous les navigateurs, même les plus anciens.<p>
+			<p><strong>Réponse Ajax du serveur:</strong></p>
+			<div id="reponseGET" class="response"></div>
+
+			<ul>
+				<li>GET en fetch/Ajax correspondant à la première requête de l'exemple précédent: <button onclick="getRequest1();">Clicker</button></li>
+				<p></p>
+				<li>GET en fetch/Ajax correspondant à la seconde requête de l'exemple précédent: <button onclick="getRequest2();">Clicker</button></li>
+				<p></p>
+				<li>GET en fetch/Ajax correspondant à la troisème requête de l'exemple précédent: <button onclick="getRequest3();">Clicker</button></li>
+				<p></p>
+				<li>GET en fetch/Ajax correspondant à la quatrième requête de l'exemple précédent: <button onclick="getRequest4();">Clicker</button></li>
+			</ul> -->
+			<h2>HTTP POST pour insérer un Cas</h2>
+			<p>Avec fetch/Ajax POST<p>
+			<p><strong>Réponse Ajax du serveur:</strong></p>
+			<div id="reponsePOST" class="response"></div>
+			<form onsubmit="postRequest(event);">
+				<fieldset>
+					<legend>Ajout d'un Cas</legend>
+					<label>
+						Nom dossier: <input type="text" name="nom_dossier"
+						value="Alien à la miage" required placeholder="Cas A la miage ">
+					</label>
+					<p></p>
+					<label>
+						Zone: <input type="text" name="zone" value="France" required placeholder="France">
+					</label>
+					<p></p>
+					<label>
+						Zone Code: <input type="text" name="zone_code" value="02" required placeholder="02">
+					</label>
+					<p></p>
+					<label>
+						Zone Type: <input type="text" name="zone_type" value="Departement" required placeholder="Departement">
+					</label>
+					<p></p>
+					<label>
+						annee: <input type="text" name="annee" value="1920" required placeholder="année du fait yyyy">
+					</label>
+					<p></p>
+					<label>
+						mois: <input type="text" name="mois" value="12" required placeholder="mois du fait mm">
+					</label>
+					<p></p>
+					<label>
+						jours: <input type="text" name="jour" value="10" required placeholder="jour du fait jj">
+					</label>
+					<p></p>
+					<label>
+						description: <input type="text" name="resume_desc" value="Le directeur serait il un reptilien ?" required placeholder="Blablablabla">
+					</label>
+					<p></p>
+					<label>
+						resumé: <input type="text" name="resume_short" value="Michel Buffa=> affuble chim ?  " required placeholder="petit résumé pas trop long">
+					</label>
+					<p></p>
+					<label>
+						nb temoignage: <input type="text" name="nb_temoignage" value="150" required placeholder="nombre de temoignage">
+					</label>
+					<p></p>
+					<label>
+						nb temoin: <input type="text" name="nb_temoin" value="150" required placeholder="Nombre de temoin present">
+					</label>
+					<p></p>
+					<label>
+						nb pan: <input type="text" name="nb_pan" value="1"  placeholder="???">
+					</label>
+					<p></p>
+					<label>
+						etrangeté: <input type="text" name="etrangete" value="0.9"  placeholder="niveau entre 0 et 1">
+					</label>
+					<p></p>
+					<label>
+						fiabilité: <input type="text" name="fiabilite" value="1"  placeholder="niveau entre 0 et 1">
+					</label>
+					<p></p>
+					<label>
+						qte info: <input type="text" name="qte_info" value="0.9"  placeholder="niveau entre 0 et 1">
+					</label>
+					<p></p>
+					<label>
+						consitance: <input type="text" name="consitance" value="0"  placeholder="niveau entre 0 et 1">
+					</label>
+					<p></p>
+					<label>
+						classification: <input type="text" name="classification" value="classification" required placeholder="Type A, B, C, ou">
+					</label>
+					<p></p>
+					<button>Ajouter ce restaurant</button>
+				</fieldset>
+			</form>
+
+			<h2>HTTP PUT pour modifier un restaurant</h2>
+			<p>Avec fetch/Ajax PUT<p>
+			<p><strong>Réponse Ajax du serveur:</strong></p>
+			<div id="reponsePUT" class="response"></div>
+			<form id="formulaireModification" onsubmit="putRequest(event);">
+				<fieldset>
+					<legend>Modification d'un restaurant</legend>
+					<label>
+						Id: <input type="text" name="id_cas"
+						value="2" required placeholder="Id du restaurant à modifier">
+					</label>
+					<p></p>
+					<label>
+						Nom: <input type="text" name="nom"
+						value="Sushis de rabat" required placeholder="Michel's restaurant">
+					</label>
+					<p></p>
+					<label>
+						Cuisine: <input type="text" name="cuisine" value="Japonais/Marocaine" required placeholder="Cuisine française">
+					</label>
+					<p></p>
+					<button>Modifier ce restaurant</button>
+				</fieldset>
+			</form>
+
+			<h2>HTTP DELETE pour Supprimer un restaurant</h2>
+			<p>Avec fetch/Ajax DELETE<p>
+			<p><strong>Réponse Ajax du serveur:</strong></p>
+			<div id="reponseDELETE" class="response"></div>
+			<form onsubmit="deleteRequest(event);">
+				<fieldset>
+					<legend>Suppression d'un restaurant</legend>
+					<label>
+						Id: <input type="text" name="id_cas"
+						value="2" required placeholder="Id du restaurant à supprimer">
+					</label>
+
+					<button>Supprimer ce restaurant</button>
+				</fieldset>
+			</form>
+	</body>
+</html>

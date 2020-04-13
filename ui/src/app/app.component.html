@@ -1,0 +1,75 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Projet Alien M2 MBDS
+  </h1>
+  <img width="200" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+  <h2>Membres du projet</h2>
+  <app-username [username]="'Chaibi Sofian'" (userClicked)="onUserWasClicked($event)"></app-username>
+  <app-username [username]="'Khchiou Mohamed'" (userClicked)="onUserWasClicked($event)"></app-username>
+</div>
+
+<!-- <p>
+  <label>
+    Nouvel élément : 
+    <input type="text" [(ngModel)]="nouvelElement">
+  </label>
+<button (click)="onAddElement()">Ajouter élément</button>
+
+</p>
+<p>Vous avez saisi : {{nouvelElement}}</p>
+ -->
+
+<div id="app">
+  <h1>Nombre de Cas : {{ nbCas }}, nb pages = {{nbPagesDeResultats}}</h1>
+  <p>
+    <input type="range" (change)="getCas()" value=10 min=2 max=100 [(ngModel)]="pagesize"> :
+    {{pagesize}}
+  </p>
+
+
+  <!-- modal for Cas details-->
+  <jw-modal id="detail-modal">
+    <button class="modal-default-button" (click)="closeModal('detail-modal');">Close</button>
+    <p>Dossier : {{detailCas.nom_dossier}}</p>
+    <p>Zone : {{detailCas.zone}}</p>
+
+    <h3>Resume :</h3>
+    <!-- Verification de l'existance de l'adresse-->
+    <div>
+      <p>{{detailCas.resume_short}}</p>
+    </div>
+  </jw-modal>
+
+  <table>
+    <tr>
+      <th>Nom</th>
+      <th>Zone</th>
+      <th>Annee</th>
+      <th>Nb Temoignage</th>
+      <th colspan="2">Edition</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}" (click)="onDeleteElement(i)">
+
+        <td (click)="detailsCas(i)">{{cas.nom_dossier}}</td>
+        <td> {{cas.zone}}</td>
+        <td> {{cas.annee}}</td>
+        <td> {{cas.nb_temoignage}}</td>
+        <td><button (click)="deleteCas(i)" >Supprimer</button></td>
+        <td><button>Modifier</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="pagination" class="center-div">
+    <button (click)="onFirstPage()" [ngStyle]="{inactif:(page==0)}">Premiere page</button>
+    <button (click)="onPagePrecedente()" [ngStyle]="{inactif:(page==0)}">Page Precedente</button>
+    <button (click)="onPageSuivante()" [ngStyle]="{inactif:(page == (nbPagesDeResultats-1))}">
+      Page Suivante</button>
+    <button (click)="onLastPage()" [ngStyle]="{inactif:(page == (nbPagesDeResultats-1))}">Derniere page</button>
+  </div>
+
+</div>

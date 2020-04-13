@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CasService } from './cas.service';
 import { Cas } from './models/cas.model';
 
@@ -50,7 +50,8 @@ export class AppComponent implements OnInit {
 
   // On "injecte le service" qui servira par la suite à
   // récupérer des données sur le Web
-  constructor(private casService: CasService, private modalService: ModalService) { }
+  constructor(private casService: CasService, private modalService: ModalService) {
+   }
 
   // Appelé lorsque le composant est créé
   ngOnInit(): void {
@@ -87,6 +88,9 @@ export class AppComponent implements OnInit {
     var cas = this.listCas[index];
 
     this.detailCas = cas;
+
+    this.openModal("detail-modal");
+    
   }
 
   onFirstPage() {
@@ -115,6 +119,7 @@ export class AppComponent implements OnInit {
 
 
   openModal(id: string) {
+    console.log(this.modalService);
     this.modalService.open(id);
   }
 

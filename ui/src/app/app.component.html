@@ -31,7 +31,7 @@
 
 
   <!-- modal for Cas details-->
-  <jw-modal id="detail-modal">
+  <jw-modal class="jw-modal" id="detail-modal">
     <button class="modal-default-button" (click)="closeModal('detail-modal');">Close</button>
     <p>Dossier : {{detailCas.nom_dossier}}</p>
     <p>Zone : {{detailCas.zone}}</p>
@@ -53,7 +53,6 @@
     </tr>
     <tbody>
       <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}" (click)="onDeleteElement(i)">
-
         <td (click)="detailsCas(i)">{{cas.nom_dossier}}</td>
         <td> {{cas.zone}}</td>
         <td> {{cas.annee}}</td>

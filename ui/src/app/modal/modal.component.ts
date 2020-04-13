@@ -9,13 +9,14 @@ import { ModalService } from './modal.service';
         <div class="jw-modal-body">
             <ng-content></ng-content>
         </div>
-      </div>
-      <div class="jw-modal-background"></div>`
+      </div>`
 })
 
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
   private element: any;
+  private base: string;
+  private visible: string;
 
   constructor(private modalService: ModalService, private el: ElementRef) {
     this.element = el.nativeElement;
@@ -23,6 +24,8 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     let modal = this;
+    this.base = "jw-modal";
+    this.visible="-invisble";
 
     // ensure id attribute exists
     if (!this.id) {
@@ -35,13 +38,14 @@ export class ModalComponent implements OnInit, OnDestroy {
 
     // close modal on background click
     this.element.addEventListener('click', function (e: any) {
-      if (e.target.className === 'jw-modal') {
+      if (e.target.className === this.base+this.visible) {
         modal.close();
       }
     });
 
     // add self (this modal instance) to the modal service so it's accessible from controllers
     this.modalService.add(this);
+    this.close();
   }
 
   // remove self from modal service when directive is destroyed
@@ -52,13 +56,13 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   // open modal
   open(): void {
-    this.element.style.display = 'block';
-    document.body.classList.add('jw-modal-open');
+    this.element.className = this.base+"-visible";
+    this.visible="-visible"
   }
 
   // close modal
   close(): void {
-    this.element.style.display = 'none';
-    document.body.classList.remove('jw-modal-open');
+    this.element.className= this.base+"-invisible";
+    this.visible="-invisible"
   }
 }

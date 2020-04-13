@@ -115,6 +115,7 @@ h3{
     color: #4CAF50;
 }
 
+
 .jw-modal-visible {
     position: relative;
     z-index: 9998;
@@ -140,6 +141,7 @@ h3{
     transition: opacity .3s ease;
     vertical-align: middle;
   }
+
 .modal-default-button {
     float: right;
 }

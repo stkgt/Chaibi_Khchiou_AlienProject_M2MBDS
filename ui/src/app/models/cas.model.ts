@@ -1,5 +1,6 @@
 export class Cas {
   _id: string;
+  id_cas: string;
   nom_dossier: string;
   zone: string;
   zone_code: string;
@@ -23,4 +24,5 @@ export class Cas {
   consitance: string;
   consistance_calc: string;
   consistance_calc_err: string;
+  classification: string;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Cas } from './models/cas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,14 @@ export class CasService {
   deleteCas(id:string) : Promise<any>{
     // on envoie un requete delete pour supprimer
     return this.http.delete(this.baseUrl+"/"+id).toPromise();
+  }
+
+  updateCas(cas:Cas) : Promise<any>{
+    return this.http.put(this.baseUrl+"/"+cas.id_cas, cas).toPromise();
+  }
+
+  insertCas(cas:Cas) : Promise<any>{
+    return this.http.post(this.baseUrl, cas).toPromise();
   }
 
 }

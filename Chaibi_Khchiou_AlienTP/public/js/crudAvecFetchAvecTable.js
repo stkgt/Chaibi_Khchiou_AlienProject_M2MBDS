@@ -108,7 +108,7 @@ function putRequest(event) {
     // en prévision d'un envoi multipart en ajax/fetch
     let donneesFormulaire = new FormData(event.target);
 
-    let id = form._id.value; // on peut aller chercher la valeur
+    let id = form.id_cas.value; // on peut aller chercher la valeur
                              // d'un champs d'un formulaire
                              // comme cela, si on connait le nom
                              // du champ (valeur de son attribut name)
@@ -132,7 +132,7 @@ function putRequest(event) {
 }
 
 // REQUETES DELETE
-function deleteRequest(event) {
+function deleteRequestCas(event) {
     // Pour éviter que la page ne se ré-affiche
     event.preventDefault();
 
@@ -141,16 +141,55 @@ function deleteRequest(event) {
     // l'événement
     let form = event.target;
  
-    let id = form._id.value; // on peut aller chercher la valeur
+    let id = form.id_cas.value; // on peut aller chercher la valeur
                              // d'un champs d'un formulaire
                              // comme cela, si on connait le nom
                              // du champ (valeur de son attribut name)
 
-    envoieRequeteFetchDelete(id);
+    envoieRequeteFetchDeleteCas(id);
 }
 
-function envoieRequeteFetchDelete(id) {
+function envoieRequeteFetchDeleteCas(id) {
     let url = "/api/cas/" + id;
+
+    fetch(url, {
+        method: "DELETE",
+    })
+    .then(function(responseJSON) {
+        responseJSON.json()
+            .then(function(res) {
+                // Maintenant res est un vrai objet JavaScript
+                afficheReponseDELETE(res);
+            });
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+}
+
+
+
+
+// REQUETES DELETE
+function deleteRequestTemoingnage(event) {
+    // Pour éviter que la page ne se ré-affiche
+    event.preventDefault();
+
+    // Récupération du formulaire. Pas besoin de document.querySelector
+    // ou document.getElementById puisque c'est le formulaire qui a généré
+    // l'événement
+    let form = event.target;
+ 
+    let id = form.id_cas.value; // on peut aller chercher la valeur
+                             // d'un champs d'un formulaire
+                             // comme cela, si on connait le nom
+                             // du champ (valeur de son attribut name)
+
+    envoieRequeteFetchDeleteTemoignage(id);
+}
+
+function envoieRequeteFetchDeleteTemoignage(id) {
+    let url = "/api/temoignage/" + id;
 
     fetch(url, {
         method: "DELETE",

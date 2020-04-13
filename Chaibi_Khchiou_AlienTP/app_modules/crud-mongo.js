@@ -214,7 +214,8 @@ exports.updateCas = function(id, formData, callback) {
 exports.deleteCas= function(id, callback) {
 	MongoClient.connect(url, function(err, client) {
 		var db = client.db(dbName);
-
+		exports.deleteTemoignageFromCas(id);
+		console.log("suppression de cas id:"+id);
 		if(!err) {
             let myquery = { "id_cas": id};
 	        
@@ -529,15 +530,49 @@ exports.updateTemoignage = function(id, formData, callback) {
 	});
 }
 
+exports.deleteTemoignageFromCas= function(id) {
+	MongoClient.connect(url, function(err, client) {
+		var db = client.db(dbName);
+		console.log("suppression de temoignage id:"+id);
+		if(!err) {
+            let myquery = { "id_cas": id};
+	        
+			db.collection(dbCollectionTemoignage)
+			.deleteMany(myquery, function(err, result) {
+	         	if(!err){
+			    	reponse = {
+		                succes : true,
+		                result: result,
+		                error : null,
+		                msg: "Suppression réussie " + result
+		            };
+			   	} else {
+		            reponse = {
+		                succes : false,
+		                error : err,
+		                msg: "Problème à la suppression"
+		            };
+			    }
+	        });
+		} else{
+			let reponse = reponse = {
+                    	succes: false,
+                        error : err,
+                        msg:"Problème lors de la suppression, erreur de connexion."
+                    };
+		}
+	});
+}
+
 exports.deleteTemoignage= function(id, callback) {
 	MongoClient.connect(url, function(err, client) {
 		var db = client.db(dbName);
-
+		console.log("suppression de temoignage id:"+id);
 		if(!err) {
             let myquery = { "id_temoignage": id};
 	        
 			db.collection(dbCollectionTemoignage)
-			.deleteOne(myquery, function(err, result) {
+			.deleteMany(myquery, function(err, result) {
 	         	if(!err){
 			    	reponse = {
 		                succes : true,

@@ -107,7 +107,7 @@ function putRequest(event) {
     // en prévision d'un envoi multipart en ajax/fetch
     let donneesFormulaire = new FormData(event.target);
 
-    let id = form._id.value; // on peut aller chercher la valeur
+    let id = form.id_cas.value; // on peut aller chercher la valeur
                              // d'un champs d'un formulaire
                              // comme cela, si on connait le nom
                              // du champ (valeur de son attribut name)
@@ -143,10 +143,11 @@ function deleteRequest(event) {
     // en prévision d'un envoi multipart en ajax/fetch
     let donneesFormulaire = new FormData(event.target);
 
-    let id = form._id.value; // on peut aller chercher la valeur
+    let id = form.id_cas.value; // on peut aller chercher la valeur
                              // d'un champs d'un formulaire
                              // comme cela, si on connait le nom
                              // du champ (valeur de son attribut name)
+    console.log(id);
 
     let url = "/api/cas/" + id;
 

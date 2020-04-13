@@ -166,6 +166,7 @@ exports.updateCas = function(id, formData, callback) {
 		if(!err) {
             let myquery = { "id_cas": id};
 	        let newvalues = {
+				id_cas: id,
 				nom_dossier: formData.nom_dossier,
 				zone: formData.zone,
 				zone_code: formData.zone_code,
@@ -450,6 +451,8 @@ exports.updateTemoignage = function(id, formData, callback) {
 		if(!err) {
             let myquery = { "id_temoignage": id};
 	        let newvalues = {
+				id_temoignage: id,
+				id_cas: formData.id_cas,
 				tem_chrono: formData.tem_chrono,
 				obs_chrono: formData.obs_chrono,
 				nom_dossier: formData.nom_dossier,

@@ -254,7 +254,9 @@
         <td> {{cas.zone}}</td>
         <td> {{cas.zone_code}}</td>
         <td> {{cas.annee}}</td>
-        <td> {{cas.nb_temoignage}}</td>
+        <td>
+          {{cas.nb_temoignage!=''?cas.nb_temoignage:0}}
+        </td>
         <td><button (click)="deleteCas(i)">Supprimer</button></td>
         <td><button (click)="modifierCas(i)">Modifier</button></td>
       </tr>

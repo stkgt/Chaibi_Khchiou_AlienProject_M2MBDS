@@ -24,7 +24,8 @@
       <fieldset>
         <legend>Ajout d'un Cas</legend>
         <label>
-          Nom dossier: <input type="text" name="nom_dossier" [(ngModel)]="nouveauCas.nom_dossier" required="" placeholder="Cas A la miage ">
+          Nom dossier: <input type="text" name="nom_dossier" [(ngModel)]="nouveauCas.nom_dossier" required=""
+            placeholder="Cas A la miage ">
         </label>
         <p></p>
         <label>
@@ -32,15 +33,18 @@
         </label>
         <p></p>
         <label>
-          Zone Code: <input type="text" name="zone_code" [(ngModel)]="nouveauCas.zone_code" required="" placeholder="02">
+          Zone Code: <input type="text" name="zone_code" [(ngModel)]="nouveauCas.zone_code" required=""
+            placeholder="02">
         </label>
         <p></p>
         <label>
-          Zone Type: <input type="text" name="zone_type" [(ngModel)]="nouveauCas.zone_type" required="" placeholder="Departement">
+          Zone Type: <input type="text" name="zone_type" [(ngModel)]="nouveauCas.zone_type" required=""
+            placeholder="Departement">
         </label>
         <p></p>
         <label>
-          annee: <input type="text" name="annee" [(ngModel)]="nouveauCas.annee" required="" placeholder="année du fait yyyy">
+          annee: <input type="text" name="annee" [(ngModel)]="nouveauCas.annee" required=""
+            placeholder="année du fait yyyy">
         </label>
         <p></p>
         <label>
@@ -52,19 +56,23 @@
         </label>
         <p></p>
         <label>
-          description: <input type="text" name="resume_desc" [(ngModel)]="nouveauCas.resume_desc" required="" placeholder="Blablablabla">
+          description: <input type="text" name="resume_desc" [(ngModel)]="nouveauCas.resume_desc" required=""
+            placeholder="Blablablabla">
         </label>
         <p></p>
         <label>
-          resumé: <input type="text" name="resume_short" [(ngModel)]="nouveauCas.resume_short" required="" placeholder="petit résumé pas trop long">
+          resumé: <input type="text" name="resume_short" [(ngModel)]="nouveauCas.resume_short" required=""
+            placeholder="petit résumé pas trop long">
         </label>
         <p></p>
         <label>
-          nb temoignage: <input type="text" name="nb_temoignage" [(ngModel)]="nouveauCas.nb_temoignage" required="" placeholder="nombre de temoignage">
+          nb temoignage: <input type="text" name="nb_temoignage" [(ngModel)]="nouveauCas.nb_temoignage" required=""
+            placeholder="nombre de temoignage">
         </label>
         <p></p>
         <label>
-          nb temoin: <input type="text" name="nb_temoin" [(ngModel)]="nouveauCas.nb_temoin" required="" placeholder="Nombre de temoin present">
+          nb temoin: <input type="text" name="nb_temoin" [(ngModel)]="nouveauCas.nb_temoin" required=""
+            placeholder="Nombre de temoin present">
         </label>
         <p></p>
         <label>
@@ -72,35 +80,40 @@
         </label>
         <p></p>
         <label>
-          etrangeté: <input type="text" name="etrangete" [(ngModel)]="nouveauCas.etrangete" placeholder="niveau entre 0 et 1">
+          etrangeté: <input type="text" name="etrangete" [(ngModel)]="nouveauCas.etrangete"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="nouveauCas.fiabilite" placeholder="niveau entre 0 et 1">
+          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="nouveauCas.fiabilite"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          qte info: <input type="text" name="qte_info" [(ngModel)]="nouveauCas.qte_info" placeholder="niveau entre 0 et 1">
+          qte info: <input type="text" name="qte_info" [(ngModel)]="nouveauCas.qte_info"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          consitance: <input type="text" name="consitance" [(ngModel)]="nouveauCas.consitance" placeholder="niveau entre 0 et 1">
+          consitance: <input type="text" name="consitance" [(ngModel)]="nouveauCas.consitance"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          classification: <input type="text" name="classification" [(ngModel)]="nouveauCas.classification" required="" placeholder="Type A, B, C, ou">
+          classification: <input type="text" name="classification" [(ngModel)]="nouveauCas.classification" required=""
+            placeholder="Type A, B, C, ou">
         </label>
         <p></p>
         <button (click)="saveNewCas();">Ajouter ce cas </button>
       </fieldset>
     </form>
   </div>
-<br/>
-<br/>
-  
+  <br />
+  <br />
+
   <!-- Div de modification de cas -->
   <div id="divModification" style="display: none;">
-  <button (click)="cancelModif();">Annuler</button>
+    <button (click)="cancelModif();">Annuler</button>
     <form id="formulaireModification">
       <fieldset>
         <legend>Modification d'un Cas</legend>
@@ -157,23 +170,28 @@
         </label>
         <p></p>
         <label>
-          etrangeté: <input type="text" name="etrangete" [(ngModel)]="casModif.etrangete" placeholder="niveau entre 0 et 1">
+          etrangeté: <input type="text" name="etrangete" [(ngModel)]="casModif.etrangete"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="casModif.fiabilite" placeholder="niveau entre 0 et 1">
+          fiabilité: <input type="text" name="fiabilite" [(ngModel)]="casModif.fiabilite"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          qte info: <input type="text" name="qte_info" [(ngModel)]="casModif.qte_info" placeholder="niveau entre 0 et 1">
+          qte info: <input type="text" name="qte_info" [(ngModel)]="casModif.qte_info"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          consitance: <input type="text" name="consitance" [(ngModel)]="casModif.consitance" placeholder="niveau entre 0 et 1">
+          consitance: <input type="text" name="consitance" [(ngModel)]="casModif.consitance"
+            placeholder="niveau entre 0 et 1">
         </label>
         <p></p>
         <label>
-          classification: <input type="text" name="classification" [(ngModel)]="casModif.classification" required placeholder="Type A, B, C, ou">
+          classification: <input type="text" name="classification" [(ngModel)]="casModif.classification" required
+            placeholder="Type A, B, C, ou">
         </label>
         <p></p>
         <button (click)="saveModif();">Modifier ce Cas</button>
@@ -192,20 +210,32 @@
 
   <!-- modal for Cas details-->
   <!-- <div *ngIf="sowhModal"> -->
-  <jw-modal class="jw-modal" id="detail-modal">
-    <div class="modal-header">
-      <button class="modal-default-button" (click)="closeModal('detail-modal');">X</button>
-      <h3>Details du Cas</h3>
-    </div>
-    <p>Dossier : {{detailCas.nom_dossier}}</p>
-    <p>Zone : {{detailCas.zone}}</p>
+  <div id="modal" style="display: block;">
 
-    <h3>Resume :</h3>
-    <!-- Verification de l'existance de l'adresse-->
-    <div>
-      <p>{{detailCas.resume_short}}</p>
-    </div>
-  </jw-modal>
+    <jw-modal class="jw-modal" id="detail-modal">
+      <div id="modal" class="modal-mask">
+
+        <div id="modal" class="modal-wrapper">
+          <div id="modal" class="modal-container">
+            <div class="modal-header">
+              <button class="modal-default-button" (click)="closeModal('detail-modal');">X</button>
+              <h3>Details du Cas</h3>
+            </div>
+            <p>Dossier : {{detailCas.nom_dossier}}</p>
+            <p>Zone : {{detailCas.zone}}</p>
+
+            <h3>Resume :</h3>
+            <!-- Verification de l'existance de l'adresse-->
+            <div>
+              <p>{{detailCas.resume_short}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </jw-modal>
+
+  </div>
+
 
   <!-- </div> -->
 
@@ -219,7 +249,7 @@
       <th colspan="2">Edition</th>
     </tr>
     <tbody>
-      <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}" (click)="onDeleteElement(i)">
+      <tr *ngFor="let cas of listCas, let i=index" [ngStyle]="{color : getColor(i)}">
         <td (click)="detailsCas(i)">{{cas.nom_dossier}}</td>
         <td> {{cas.zone}}</td>
         <td> {{cas.zone_code}}</td>

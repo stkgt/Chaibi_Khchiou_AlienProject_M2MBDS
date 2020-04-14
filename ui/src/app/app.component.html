@@ -221,14 +221,28 @@
               <button class="modal-default-button" (click)="closeModal('detail-modal');">X</button>
               <h3>Details du Cas</h3>
             </div>
+            <!-- Informations globales -->
             <p>Dossier : {{detailCas.nom_dossier}}</p>
             <p>Zone : {{detailCas.zone}}</p>
+            <p>Code postal : {{detailCas.zone_code}}</p>
+            <p>Code postal : {{detailCas.zone_code}}</p>
+            <p>Date connue : {{detailCas.jous}}/{{detailCas.mois}}/{{detailCas.annee}}</p>
+            <p>Nb de temoignage : {{detailCas.nb_temoignage}}</p>
+            <p>Fiabilité : {{detailCas.fiabilite!=''?cas.fiabilite:'Non estimée'}}</p>
+            <p>Classification : {{detailCas.classification}}</p>
 
+            <!-- Resume -->
             <h3>Resume :</h3>
-            <!-- Verification de l'existance de l'adresse-->
             <div>
               <p>{{detailCas.resume_short}}</p>
             </div>
+
+            <!-- Description -->
+            <h3>Description des faits :</h3>
+            <div>
+              <p>{{detailCas.resume_desc}}</p>
+            </div>
+
           </div>
         </div>
       </div>
